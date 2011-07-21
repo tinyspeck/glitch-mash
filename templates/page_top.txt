@@ -7,7 +7,7 @@
 {/if}
 
 {foreach from=$avatars item='row'}
-	<div style="border-top: 1px solid #eee; padding: 1em 0;">
+	<div style="border-top: 1px solid #eee; padding: 1em 0; clear: both">
 
 		<h2>{$row.num}. {$row.player.name|escape}</h2>
 
@@ -39,7 +39,7 @@
 		<br />
 		This outfit has won {$row.wins} out of {$row.votes} votes ({$row.ratio|ratio_percent}%)
 
-		<br clear="both" />
+		<br clear="all" />
 	</div>
 {/foreach}
 
