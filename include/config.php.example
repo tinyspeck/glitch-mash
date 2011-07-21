@@ -1,0 +1,102 @@
+<?
+	#
+	# $Id$
+	#
+
+	$GLOBALS['cfg'] = array();
+
+
+	#
+	# Things you'll certainly need to tweak
+	#
+
+	$GLOBALS['cfg']['db_main'] = array(
+		'host'	=> 'localhost',
+		'user'	=> 'root',
+		'pass'	=> 'root',
+		'name'	=> 'glitchmash',
+		'auto_connect' => 0,
+	);
+
+
+	$GLOBALS['cfg']['abs_root_url']		= 'http://glitchmash.iamcal.com/';
+	$GLOBALS['cfg']['safe_abs_root_url']	= $GLOBALS['cfg']['abs_root_url'];
+
+	$GLOBALS['cfg']['smarty_template_dir'] = realpath(dirname(__FILE__) . '/../templates/');
+	$GLOBALS['cfg']['smarty_compile_dir'] = realpath(dirname(__FILE__) . '/../templates_c/');
+
+
+	# No, seriously. Change these...
+
+	$GLOBALS['cfg']['crypto_crumb_secret'] = '...';
+	$GLOBALS['cfg']['crypto_vote_secret'] = '...';
+
+
+	#
+	# api stuff
+	#
+
+	$GLOBALS['cfg']['api_client_id']	= '...';
+	$GLOBALS['cfg']['api_client_secret']	= '...';
+	$GLOBALS['cfg']['api_redir_url']	= 'http://glitchmash.iamcal.com/auth/';
+	$GLOBALS['cfg']['api_url']		= 'http://api.glitch.com';
+
+
+	#
+	# Things you may need to tweak
+	#
+
+	$GLOBALS['cfg']['auth_cookie_domain']	= 'glitchmash.iamcal.com';
+	$GLOBALS['cfg']['auth_cookie_name']	= 'token';
+
+	$GLOBALS['cfg']['crumb_ttl_default'] = 300;	# seconds
+
+	$GLOBALS['cfg']['rewrite_static_urls'] = array(
+		# '/foo' => '/bar/',
+	);
+
+	$GLOBALS['cfg']['email_from_name']	= 'flamework app';
+	$GLOBALS['cfg']['email_from_email']	= 'admin@ourapp.com';
+	$GLOBALS['cfg']['auto_email_args']	= '-fadmin@ourapp.com';
+
+
+	#
+	# Set this to 'prod' for production use
+	#
+
+	$GLOBALS['cfg']['environment'] = 'dev';
+
+
+	#
+	# Things you can probably not worry about
+	#
+
+	$GLOBALS['cfg']['user'] = null;
+
+	$GLOBALS['cfg']['smarty_compile'] = 1;
+
+	$GLOBALS['cfg']['http_timeout'] = 3;
+
+	$GLOBALS['cfg']['check_notices'] = 1;
+
+	$GLOBALS['cfg']['db_profiling'] = 0;
+
+
+	#
+	# This will assign $pagination automatically for smarty
+	#
+	
+	$GLOBALS['cfg']['pagination_assign_smarty_variable'] = 1;
+
+	$GLOBALS['cfg']['pagination_per_page'] = 10;
+	$GLOBALS['cfg']['pagination_spill'] = 2;
+
+
+	#
+	# enable this flag to show a full call chain (instead of just the
+	# immediate caller) in database query log messages and embedded in
+	# the actual SQL sent to the server.
+	#
+
+	$GLOBALS['cfg']['db_full_callstack'] = 0;
+?>
