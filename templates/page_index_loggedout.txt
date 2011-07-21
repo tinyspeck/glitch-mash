@@ -6,7 +6,7 @@
 
 	<p>You need a Glitch Beta account to play.</p>
 
-	<p>If you already have one, then you can <a href="/auth/">sign in</a> to start voting.</p>
+	<p>If you already have one, then you can <a href="/auth/">sign in</a> to add your avatar to the mix and start voting.</p>
 
 	<p>If you don't have an invite yet, you can still check out the <a href="/top/">top outfits</a>.</p>
 
