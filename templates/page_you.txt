@@ -49,5 +49,6 @@
 		<br clear="both" />
 	</div>
 {/foreach}
+	<br clear="all" />
 
 {include file='inc_foot.txt'}
