@@ -48,9 +48,11 @@
 				'hash'		=> AddSlashes($hash),
 				'win_id'	=> $win,
 				'lose_id'	=> $lose,
+				'date_updated'	=> time(),
 			), array(
 				'win_id'	=> $win,
 				'lose_id'	=> $lose,
+				'date_updated'	=> time(),
 			));
 
 
