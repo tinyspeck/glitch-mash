@@ -90,3 +90,7 @@ span.cost {
 	font-size: 13px;
 	color: #999;
 }
+
+img {
+	border: 0;
+}
