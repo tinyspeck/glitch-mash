@@ -1,5 +1,21 @@
 {include file='inc_head.txt'}
 
+{if $voted}
+<div style="border-bottom: 1px solid #eee; margin: 0 0 1em 0; padding-top: 1em;">
+
+	<div style="width: 450px; margin: 0 auto 20px auto; background-color: #ffc; padding: 1em 1em 0.5em 1em;">
+		<a href="/a-{$winner.id|escape}/"><img src="{$winner.url_50}" width="50" height="72" style="float: left; margin: 0 8px 20px 0;" /></a>
+		<div style="padding-top: 6px;">
+			You thought <b>{$winner.player.name|escape}</b> was better dressed than {$loser.player.name|escape}.<br />
+			{$winner.player.name|escape} has won {$winner.wins} out of {$winner.votes} votes ({$winner.ratio|ratio_percent}%).<br />
+			<a href="/a-{$winner.id|escape}/">Check out their outfit</a><br clear="all" />
+		</div>
+	</div>
+
+</div>
+{/if}
+
+
 <div style="margin: 0 0 5em 0">
 
 <div style="text-align: center">
@@ -31,20 +47,6 @@ table.choices a {
 </table>
 
 </div>
-
-{if $voted}
-<div style="border-top: 1px solid #eee; margin: 0 0 1em 0; padding-top: 1em;">
-
-	<div style="width: 450px; margin: 0 auto">
-		<a href="/a-{$winner.id|escape}/"><img src="{$winner.url_50}" width="50" height="72" style="float: left; margin: 0 4px 20px 0;" /></a>
-		&nbsp;<br />
-		You thought {$winner.player.name|escape} was better dressed than {$loser.player.name|escape}.<br />
-		{$winner.player.name|escape} has won {$winner.wins} out of {$winner.votes} votes.<br />
-		<a href="/a-{$winner.id|escape}/">Check out their outfit</a><br clear="all" />
-	</div>
-
-</div>
-{/if}
 
 <div style="border-top: 1px solid #eee; margin: 0 0 2em 0; padding-top: 1em;">
 
