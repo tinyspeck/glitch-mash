@@ -36,7 +36,7 @@ table.choices a {
 <div style="border-top: 1px solid #eee; margin: 0 0 1em 0; padding-top: 1em;">
 
 	<div style="width: 450px; margin: 0 auto">
-		<img src="{$winner.url_50}" width="50" height="72" style="float: left; margin: 0 4px 20px 0;" />
+		<a href="/a-{$winner.id|escape}/"><img src="{$winner.url_50}" width="50" height="72" style="float: left; margin: 0 4px 20px 0;" /></a>
 		&nbsp;<br />
 		You thought {$winner.player.name|escape} was better dressed than {$loser.player.name|escape}.<br />
 		{$winner.player.name|escape} has won {$winner.wins} out of {$winner.votes} votes.<br />
