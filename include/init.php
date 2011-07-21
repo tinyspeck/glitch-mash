@@ -172,6 +172,23 @@
 	}
 
 
+	function fetch_clothes($ids){
+
+		if (!count($ids)) return array();
+
+		$clothing_ids = implode(',', array_keys($ids));
+		$clothing = array();
+
+		$ret = db_fetch("SELECT * FROM glitchmash_clothing WHERE id IN ($clothing_ids)");
+		foreach ($ret['rows'] as $row){
+
+			$clothing[$row['id']] = $row;
+		}
+
+		return $clothing;
+	}
+
+
 	#
 	# this timer stores the end of core library loading
 	#
