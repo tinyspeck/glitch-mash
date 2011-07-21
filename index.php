@@ -66,14 +66,20 @@
 			list($losses1) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_votes WHERE lose_id=$win"));
 			list($losses2) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_votes WHERE lose_id=$lose"));
 
+			$vote_limit = 50;
+
 			db_update('glitchmash_avatars', array(
-				'votes'	=> $wins1+$losses1,
-				'wins'	=> $wins1,
+				'votes'		=> $wins1+$losses1,
+				'wins'		=> $wins1,
+				'enough_votes'	=> (($wins1+$losses1) > $vote_limit) ? 1 : 0,
+				'ratio'		=> $wins1 / ($wins1+$losses1),
 			), "id=$win");
 
 			db_update('glitchmash_avatars', array(
-				'votes'	=> $wins2+$losses2,
-				'wins'	=> $wins2,
+				'votes'		=> $wins2+$losses2,
+				'wins'		=> $wins2,
+				'enough_votes'	=> (($wins2+$losses2) > $vote_limit) ? 1 : 0,
+				'ratio'		=> $wins2 / ($wins2+$losses2),
 			), "id=$lose");
 
 

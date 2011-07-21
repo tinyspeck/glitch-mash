@@ -37,7 +37,7 @@
 
 		Added {'Y-m-d H:i:s'|date:$row.date_added}<br />
 		<br />
-		This outfit has won {$row.wins} out of {$row.votes} votes.
+		This outfit has won {$row.wins} out of {$row.votes} votes ({$row.ratio|ratio_percent}%)
 
 		<br clear="both" />
 	</div>
