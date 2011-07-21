@@ -6,7 +6,7 @@
 		<a href="/">Vote</a> | <a href="/top/">Top Outfits</a>
 	</div>
 	<div id="footer-right">
-		A <a href="#">demo</a> by <a href="http://iamcal.com/">Cal</a>
+		A <a href="https://github.com/tinyspeck/glitch-mash">demo</a> by <a href="http://iamcal.com/">Cal</a>
 	</div>
 </div>
 
