@@ -1,0 +1,87 @@
+
+body {
+	font-family: sans-serif;
+	font-size: 16px;
+	color: darkslategrey;
+	margin-top: 25px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 100px;
+	background-color: #D0E0F1;
+	background-image: url('/images/canvas.png');
+	text-align: center;
+}
+
+#main {
+	background-color: white;
+	border: 1px dotted #CCC;
+	padding: 2em;
+}
+
+.content {
+	margin: 0 auto;
+	width: 800px;
+	text-align: left;
+}
+
+#nav, #footer-left, #footer-right {
+	float: right;
+	font-size: 13px;
+	padding: 10px 25px;
+	background-color: #DEF1C0;
+	border: 1px solid #ECF7DB;
+	opacity: .85;
+
+}
+
+#nav a, #footer-left a, #footer-right a {
+	color: darkslategrey;
+}
+
+#nav {
+	margin: 0 0 25px 0;
+}
+
+#footer-left {
+	float: left;
+	margin: 25px 0 25px 0;
+}
+
+#footer-right {
+	margin: 25px 0 25px 0;
+}
+
+
+h1 {
+	margin-top: 0;
+}
+
+.admin-section {
+	background-image: url("/images/stripes_bg.gif");
+	border-top: 1px solid #BECCCC;
+	border-bottom: 1px solid #BECCCC;
+	padding: 40px;
+	position: relative;
+	text-align: left;
+}
+
+pre.admin-debug {
+	background: none repeat scroll 0 0 #000000;
+	color: #00FF00;
+	font-size: 14px;
+	margin: 0;
+	padding: 1em;
+}
+
+p.error {
+	background-color: #f99;
+}
+
+p.message {
+	background-color: #9f9;
+}
+
+p.highlight {
+	background-color: #ECF7DB;
+	padding: 4px;
+}

@@ -1,0 +1,56 @@
+{include file='inc_head.txt'}
+
+<div style="margin: 0 0 5em 0">
+
+<div style="text-align: center">
+	<h1>Which outfit is best?</h1>
+
+	<p>Click on the outfit you like best to cast your vote.</p>
+</div>
+
+<style>{literal}
+table.choices a {
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+</style>{/literal}
+
+<table border="0" width="100%" class="choices">
+	<tr>
+		<td style="text-align: center">
+			<a href="/?vote={$choice1.vote}"><img src="{$choice1.url|escape}" width="172" height="248" /></a><br />
+			<a href="/?vote={$choice1.vote}">{$choice1.player.name|escape}</a><br />
+		</td>
+		<td style="text-align: center">
+			<a href="/?vote={$choice2.vote}"><img src="{$choice2.url|escape}" width="172" height="248" /></a><br />
+			<a href="/?vote={$choice2.vote}">{$choice2.player.name|escape}</a><br />
+		</td>
+	</tr>
+</table>
+
+</div>
+
+{if $voted}
+<div style="border-top: 1px solid #eee; margin: 0 0 1em 0; padding-top: 1em;">
+
+	<div style="width: 450px; margin: 0 auto">
+		<img src="{$winner.url_50}" width="50" height="72" style="float: left; margin: 0 4px 20px 0;" />
+		&nbsp;<br />
+		You thought {$winner.player.name|escape} was better dressed than {$loser.player.name|escape}.<br />
+		{$winner.player.name|escape} has won {$winner.wins} out of {$winner.votes} votes.<br />
+		<a href="/a-{$winner.id|escape}/">Check out their outfit</a><br clear="all" />
+	</div>
+
+</div>
+{/if}
+
+<div style="border-top: 1px solid #eee; margin: 0 0 2em 0; padding-top: 1em;">
+
+	<p style="text-align: center">
+		You can view the <a href="/top/">best outfits so far</a>
+	</p>
+</div>
+
+{include file='inc_foot.txt'}

@@ -1,0 +1,21 @@
+	</div>
+</div>
+
+<div class="content">
+	<div id="footer-left">
+		<a href="/">Vote</a> | <a href="/top/">Top Outfits</a>
+	</div>
+	<div id="footer-right">
+		A <a href="#">demo</a> by <a href="http://iamcal.com/">Cal</a>
+	</div>
+</div>
+
+{if $cfg.admin_flags_show_notices}
+<div style="padding: 2em;">
+	{timings}
+</div>
+{/if}
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{include file='inc_head.txt'}
+
+	<h1>Your Outfits</h1>
+
+{if $smarty.get.imported}
+	<p class="highlight">Your current outfit has been imported, ready for voting. <a href="/">Click here to start voting</a>.</p>
+{else}
+	<p><a href="/">&laquo; Back to the voting</a></p>
+
+	<p>All of your outfits we know about are listed below. Only your current outfit can be voted on.</p>
+
+	<p>If you've changed your outfit in the wardrobe, <a href="/import/">click here to import the new one</a>.</p>
+{/if}
+
+{foreach from=$avatars item='row'}
+	<div style="border-top: 1px solid #eee; padding: 1em 0;">
+
+		<img src="{$row.url}" width="172" height="248" style="margin: 0 1em 1em 0; float: left" />
+
+		<div style="margin: 0 3em 1em 0; float: left">
+		<table border="0">
+{foreach from=$row.details item='row2'}
+			<tr>
+				<td><a href="{$row2.url}"><img src="{$row2.image_small}" width="40" height="40" /></a></td>
+				<td>
+					<a href="{$row2.url}">{$row2.name|escape}</a><br />
+	{if $row2.sub_only && $row2.credits}
+					{$row2.credits} credits, subscribers only<br />
+	{elseif $row2.sub_only}
+					Free for subscribers<br />
+	{elseif $row2.credits}
+					{$row2.credits} credits<br />
+	{else}
+					Free<br />
+	{/if}
+				</td>
+			</tr>
+{/foreach}
+		</table>
+		</div>
+
+{if $row.is_active}
+		<b>This is your currently active outfit</b><br />
+{/if}
+		Added {'Y-m-d H:i:s'|date:$row.date_added}<br />
+		<br />
+		This outfit has won {$row.wins} out of {$row.votes} votes.
+
+		<br clear="both" />
+	</div>
+{/foreach}
+
+{include file='inc_foot.txt'}

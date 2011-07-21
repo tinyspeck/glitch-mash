@@ -1,0 +1,25 @@
+FileETag none
+Options -MultiViews
+
+php_value magic_quotes_gpc 0
+php_value register_globals 0
+php_value magic_quotes_runtime 0
+php_value track_errors 1
+php_value last_modified off
+php_value short_open_tag on
+
+php_value error_reporting 2147483639
+
+DirectoryIndex index.php
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+
+RewriteEngine on
+
+RewriteRule  ^auth/$			/auth.php		[L]
+RewriteRule  ^checkcookie/$		/checkcookie.php	[L]
+RewriteRule  ^signout/$			/signout.php		[L]
+RewriteRule  ^import/$			/import.php		[L]
+RewriteRule  ^you/$			/you.php		[L]
+RewriteRule  ^a-(\d+)/$			/avatar.php?id=$1	[L,QSA]
+RewriteRule  ^top/$			/top.php		[L]

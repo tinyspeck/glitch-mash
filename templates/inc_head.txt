@@ -1,0 +1,30 @@
+{utf8_headers}<!DOCTYPE html> 
+<html>
+<head>
+	<title>{$page_title|default:'Glitch Mash'}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" media="all" href="/css/main.css" />
+	{$extra_head}
+</head>
+<body>
+
+<div class="content">
+<div id="nav">
+{if $cfg.user.tsid}
+	Hello {$cfg.user.name|escape}
+	|
+	<a href="/you/">Your Outfits</a>
+	|
+	<a href="/signout/?{'logout'|crumb_qs}">Sign Out</a>
+{else}
+	<a href="/auth/">Sign In</a>
+{/if}
+</div>
+	<h1 style="text-shadow: #fff 0 1px 1px;">Glitch Mash!</h1>
+
+</div>
+<br clear="all" />
+
+<div id="main">
+	<div class="content">
+
