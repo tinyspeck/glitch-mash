@@ -21,13 +21,13 @@
 				<td>
 					<a href="{$row2.url}">{$row2.name|escape}</a><br />
 	{if $row2.sub_only && $row2.credits}
-					{$row2.credits} credits, subscribers only<br />
+					<span class="cost">{$row2.credits} credits, subscribers only</span><br />
 	{elseif $row2.sub_only}
-					Free for subscribers<br />
+					<span class="cost">Free for subscribers</span><br />
 	{elseif $row2.credits}
-					{$row2.credits} credits<br />
+					<span class="cost">{$row2.credits} credits</span><br />
 	{else}
-					Free<br />
+					<span class="cost">Free</span><br />
 	{/if}
 				</td>
 			</tr>
