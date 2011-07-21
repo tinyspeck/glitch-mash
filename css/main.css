@@ -85,3 +85,8 @@ p.highlight {
 	background-color: #ECF7DB;
 	padding: 4px;
 }
+
+span.cost {
+	font-size: 13px;
+	color: #999;
+}
