@@ -27,7 +27,7 @@
 		return implode('/', $ids);
 	}
 
-	$hash = '';
+	$prev_ids = array();
 
 	if ($_GET['vote']){
 
@@ -41,6 +41,7 @@
 			$win = intval($win);
 			$lose = intval($lose);
 
+			$prev_ids = array($win, $lose);
 			$hash = hash_ids($win, $lose);
 
 			db_insert_dupe('glitchmash_votes', array(
@@ -107,24 +108,32 @@
 
 
 	#
-	# grab some avatars to vote on
+	# find 2 avatars that weren't in the last round
 	#
 
-	while (1){
-		$ret = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 2");
+	$rows = array();
 
-		$hash2 = hash_ids($ret['rows'][0]['id'], $ret['rows'][1]['id']);
-
-		if ($hash != $hash2) break;
+	$ret = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 4");
+	foreach ($ret['rows'] as $row){
+		if (!in_array($row['id'], $prev_ids)){
+			$rows[] = $row;
+		}
 	}
 
-	foreach ($ret['rows'] as $k => $row){
+	$rows = array_slice($rows, 0, 2);
+
+
+	#
+	# get player info
+	#
+
+	foreach ($rows as $k => $row){
 		$tsid_enc = AddSlashes($row['player_tsid']);
-		$ret['rows'][$k]['player'] = db_single(db_fetch("SELECT * FROM glitchmash_players WHERE tsid='$tsid_enc'"));
+		$rows[$k]['player'] = db_single(db_fetch("SELECT * FROM glitchmash_players WHERE tsid='$tsid_enc'"));
 	}
 
-	$choice1 = $ret['rows'][0];
-	$choice2 = $ret['rows'][1];
+	$choice1 = $rows[0];
+	$choice2 = $rows[1];
 
 	$choice1['vote'] = vote_code($choice1['id'], $choice2['id']);
 	$choice2['vote'] = vote_code($choice2['id'], $choice1['id']);
