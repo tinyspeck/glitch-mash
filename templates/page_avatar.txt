@@ -6,20 +6,12 @@
 	<p><a href="/">&laquo; Back to the voting</a></p>
 {/if}
 
-{if $avatar.is_active}
-	<p><b>This outfit is still being voted for.</b></p>
-{else}
-	<p><b>This outfit is no longer being voted for.</b></p>
-{/if}
-	<p>Added {'Y-m-d H:i:s'|date:$avatar.date_added}</p>
-
-	<p>This outfit has won {$avatar.wins} votes out of {$avatar.votes}.</p>
-
 
 	<div style="border-top: 1px solid #eee; padding: 1em 0;">
 
 		<img src="{$avatar.url}" width="172" height="248" style="margin: 0 1em 1em 0; float: left" />
 
+		<div style="margin: 0 3em 1em 0; float: left">
 		<table border="0">
 {foreach from=$avatar.details item='row2'}
 			<tr>
@@ -27,20 +19,49 @@
 				<td>
 					<a href="{$row2.url}">{$row2.name|escape}</a><br />
 	{if $row2.sub_only && $row2.credits}
-					{$row2.credits} credits, subscribers only<br />
+					<span class="cost">{$row2.credits} credits, subscribers only</span><br />
 	{elseif $row2.sub_only}
-					Free for subscribers<br />
+					<span class="cost">Free for subscribers</span><br />
 	{elseif $row2.credits}
-					{$row2.credits} credits<br />
+					<span class="cost">{$row2.credits} credits</span><br />
 	{else}
-					Free<br />
+					<span class="cost">Free</span><br />
 	{/if}
 				</td>
 			</tr>
 {/foreach}
 		</table>
+		</div>
 
-		<br clear="both" />
+{if $avatar.is_active}
+		<p><b>This outfit is still being voted for.</b></p>
+{else}
+		<p><b>This outfit is no longer being voted for.</b></p>
+{/if}
+		<p>Added {'Y-m-d H:i:s'|date:$avatar.date_added}</p>
+
+		<p>This outfit has won {$avatar.wins} votes out of {$avatar.votes}.</p>
+
+		<p>Check out <a href="http://beta.glitch.com/profiles/{$avatar.player.tsid|escape}/">their profile</a> on Glitch.</p>
+
+		<br clear="all" />
+	</div>
+
+	<div style="border-top: 1px solid #eee; padding: 1em 0;">
+
+		<h2>Recent Battles</h2>
+
+{foreach from=$votes item='row'}
+		<div style="float: left; padding: 1em; width: 120px; text-align: center;">
+{if $row.did_win}
+			Won against<br />
+{else}
+			Lost to<br />
+{/if}
+			<a href="/a-{$row.avatar.id}/"><img src="{$row.avatar.url_50}" width="50" height="72" /></a><br />
+		</div>
+{/foreach}
+		<br clear="all" />
 	</div>
 
 {include file='inc_foot.txt'}
