@@ -16,7 +16,7 @@
 {/if}
 
 
-<div style="margin: 0 0 5em 0">
+<div style="margin: 0 0 3em 0">
 
 <div style="text-align: center">
 	<h1>Which outfit is best?</h1>
@@ -37,11 +37,11 @@ table.choices a {
 	<tr>
 		<td style="text-align: center">
 			<a href="/?vote={$choice1.vote}"><img src="{$choice1.url|escape}" width="172" height="248" /></a><br />
-			<a href="/?vote={$choice1.vote}">{$choice1.player.name|escape}</a><br />
+			<!-- <a href="/?vote={$choice1.vote}">{$choice1.player.name|escape}</a><br /> -->
 		</td>
 		<td style="text-align: center">
 			<a href="/?vote={$choice2.vote}"><img src="{$choice2.url|escape}" width="172" height="248" /></a><br />
-			<a href="/?vote={$choice2.vote}">{$choice2.player.name|escape}</a><br />
+			<!-- <a href="/?vote={$choice2.vote}">{$choice2.player.name|escape}</a><br /> -->
 		</td>
 	</tr>
 </table>
