@@ -60,6 +60,8 @@
 {/if}
 			<a href="/a-{$row.avatar.id}/"><img src="{$row.avatar.url_50}" width="50" height="72" /></a><br />
 		</div>
+{foreachelse}
+		<p>None yet - <a href="/">start voting</a>!</p>
 {/foreach}
 		<br clear="all" />
 	</div>
