@@ -1,4 +1,4 @@
-{include file='inc_head.txt' page_title='Error'}
+{include file='inc_head.txt' title='Error'}
 
 <h1>Error</h1>
 
