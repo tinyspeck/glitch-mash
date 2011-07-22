@@ -13,7 +13,7 @@
 
 	$num = 1;
 
-	$ret = db_fetch("SELECT * FROM glitchmash_avatars WHERE enough_votes=1 ORDER BY ratio DESC LIMIT 30");
+	$ret = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND enough_votes=1 ORDER BY ratio DESC LIMIT 30");
 	foreach ($ret['rows'] as $row){
 
 		$tsid_enc = AddSlashes($row['player_tsid']);
