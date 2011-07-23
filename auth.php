@@ -99,6 +99,14 @@
 	# player is logged in - go and import their avatar
 	#
 
-	header("location: /checkcookie/?redir=".urlencode('/import/'));
+	$tsid_enc = AddSlashes($ret['player_tsid']);
+
+	list($count) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_avatars WHERE player_tsid='$tsid_enc'"));
+
+	if ($count){
+		header("location: /checkcookie/?redir=".urlencode('/you/?login=1'));
+	}else{
+		header("location: /checkcookie/?redir=".urlencode('/import/'));
+	}
 	exit;
 ?>

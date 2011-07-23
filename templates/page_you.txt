@@ -9,7 +9,7 @@
 
 	<p>All of your outfits we know about are listed below. Only your current outfit can be voted on.</p>
 
-	<p>If you've changed your outfit in the wardrobe, <a href="/import/">click here to import the new one</a>.</p>
+	<p{if $smarty.get.login} class="highlight"{/if}>If you've changed your outfit in the wardrobe, <a href="/import/">click here to import the new one</a>.</p>
 {/if}
 
 {foreach from=$avatars item='row'}
