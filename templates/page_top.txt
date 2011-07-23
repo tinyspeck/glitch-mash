@@ -6,6 +6,9 @@
 	<p><a href="/">&laquo; Back to the voting</a></p>
 {/if}
 
+	<p>There have been {$count_votes|number_format} votes cast on {$count_avatars|number_format} different outfits - these are the best so far...</p>
+
+
 {foreach from=$avatars item='row'}
 	<div style="border-top: 1px solid #eee; padding: 1em 0; clear: both">
 
