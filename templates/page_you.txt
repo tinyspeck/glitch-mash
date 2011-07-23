@@ -11,6 +11,9 @@
 
 	<p{if $smarty.get.login} class="highlight"{/if}>If you've changed your outfit in the wardrobe, <a href="/import/">click here to import the new one</a>.</p>
 {/if}
+{if $smarty.get.active}
+	<p class="highlight">Ok! We've switched your active outfits. Remember, only one outfit can be voted on at a time.</p>
+{/if}
 
 {foreach from=$avatars item='row'}
 	<div style="border-top: 1px solid #eee; padding: 1em 0;">
@@ -41,7 +44,11 @@
 
 {if $row.is_active}
 		<b>This is your currently active outfit</b><br />
+{else}
+		This outfit is not currently being voted on.
+		<a href="/you/?activate={$row.id}-{$row.code}">Make it active</a>?<br />
 {/if}
+		<br />
 		Added {'Y-m-d H:i:s'|date:$row.date_added}<br />
 		<br />
 		This outfit has won {$row.wins} out of {$row.votes} votes ({$row.ratio|ratio_percent}%)
