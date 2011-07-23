@@ -36,7 +36,7 @@ table.choices a {
 <table border="0" width="100%" class="choices">
 	<tr>
 		<td style="text-align: center">
-			<a href="/?vote={$choice1.vote}"><img src="{$choice1.url|escape}" width="172" height="248" /></a><br />
+			<a href="/?vote={$choice1.vote}"><img src="{$choice1.url|escape}" width="172" height="248" style="-webkit-transform: scale(-1,1); -moz-transform: scale(-1,1);" /></a><br />
 			<!-- <a href="/?vote={$choice1.vote}">{$choice1.player.name|escape}</a><br /> -->
 		</td>
 		<td style="text-align: center">
