@@ -55,6 +55,17 @@
 
 
 	#
+	# some totals
+	#
+
+	list($count_avatars) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_avatars"));
+	list($count_votes) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_votes"));
+
+	$smarty->assign('count_avatars', $count_avatars);
+	$smarty->assign('count_votes', $count_votes);
+
+
+	#
 	# output
 	#
 
