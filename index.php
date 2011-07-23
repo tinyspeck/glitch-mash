@@ -29,6 +29,9 @@
 
 	$prev_ids = array();
 
+	$vote_limit = 30;
+	$dbl_vote_limit = $vote_limit + $vote_limit;
+
 	if ($_GET['vote']){
 
 		list($win, $lose, $sig) = explode('-', $_GET['vote']);
@@ -66,8 +69,6 @@
 
 			list($losses1) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_votes WHERE lose_id=$win"));
 			list($losses2) = db_list(db_fetch("SELECT COUNT(*) FROM glitchmash_votes WHERE lose_id=$lose"));
-
-			$vote_limit = 30;
 
 			db_update('glitchmash_avatars', array(
 				'votes'		=> $wins1+$losses1,
@@ -108,19 +109,36 @@
 
 
 	#
-	# find 2 avatars that weren't in the last round
+	# find 2 avatars that weren't in the last round, by taking 4 pure randoms,
+	# 4 randoms with less than 30 votes and 4 randoms with less than 60 votes.
+	# make sure the list is unique too :)
 	#
 
 	$rows = array();
 
-	$ret = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 4");
-	foreach ($ret['rows'] as $row){
+	$ret1 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 4");
+	$ret2 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND enough_votes=0 ORDER BY RAND() LIMIT 4");
+	$ret3 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND votes<$dbl_vote_limit ORDER BY RAND() LIMIT 4");
+
+	foreach (array_merge($ret1['rows'], $ret2['rows'], $ret3['rows']) as $row){
 		if (!in_array($row['id'], $prev_ids)){
-			$rows[] = $row;
+			$rows[$row['id']] = $row;
 		}
 	}
 
+	shuffle($rows);
+
 	$rows = array_slice($rows, 0, 2);
+
+
+	#
+	# some debugging so i can check if the low-counts are being included
+	#
+
+	#if ($cfg['user']['name'] == 'Bees!'){
+	#	echo "{$rows[0]['player_tsid']} - {$rows[0]['votes']}<br />\n";
+	#	echo "{$rows[1]['player_tsid']} - {$rows[1]['votes']}<br />\n";
+	#}
 
 
 	#
