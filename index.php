@@ -109,21 +109,26 @@
 
 
 	#
-	# find 2 avatars that weren't in the last round, by taking 4 pure randoms,
-	# 4 randoms with less than 30 votes and 4 randoms with less than 60 votes.
-	# make sure the list is unique too :)
+	# find 2 avatars that weren't in the last round, by taking 5 pure randoms,
+	# 5 randoms with less than 30 votes and 5 randoms with less than 60 votes.
+	# make sure the list is unique and does not contain ourselves.
+	#
+	# taking 5 ensures we always have at least 2 we can pick from, since the 5
+	# may include both of our previous choices and ourselves if we're super
+	# unlucky.
 	#
 
 	$rows = array();
 
-	$ret1 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 4");
-	$ret2 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND enough_votes=0 ORDER BY RAND() LIMIT 4");
-	$ret3 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND votes<$dbl_vote_limit ORDER BY RAND() LIMIT 4");
+	$ret1 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 ORDER BY RAND() LIMIT 5");
+	$ret2 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND enough_votes=0 ORDER BY RAND() LIMIT 5");
+	$ret3 = db_fetch("SELECT * FROM glitchmash_avatars WHERE is_active=1 AND votes<$dbl_vote_limit ORDER BY RAND() LIMIT 5");
 
 	foreach (array_merge($ret1['rows'], $ret2['rows'], $ret3['rows']) as $row){
-		if (!in_array($row['id'], $prev_ids)){
-			$rows[$row['id']] = $row;
-		}
+		if (in_array($row['id'], $prev_ids)) continue;
+		if ($cfg['user']['tsid'] == $row['player_tsid']) continue;
+
+		$rows[$row['id']] = $row;
 	}
 
 	shuffle($rows);
