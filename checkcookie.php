@@ -9,7 +9,7 @@
 	#
 	# do we have a valid cookie set?
 	#
-dumper($cfg);
+
 	if (!$cfg['user']['tsid']){
 
 		$GLOBALS['error']['badcookies'] = 1;
